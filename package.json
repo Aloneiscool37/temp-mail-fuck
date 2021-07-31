@@ -1,6 +1,6 @@
 {
   "name": "temp-mail-fuck",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "temp-mail hack api",
   "main": "index.js",
   "dependencies": {
