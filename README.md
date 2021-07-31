@@ -515,9 +515,9 @@ const TempMailFuck = require('temp-mail-fuck')
 })()
 ```
 
-#### <a name="rufindmessageinterval">СlearMessagesInterval</a>
+#### <a name="rufindmessageinterval">clearMessagesInterval</a>
 
-Функция [СlearMessagesInterval](#rukillmessagesinterval) убивает любой из интервалов [findMessageInterval](#rufindmessageinterval) или [getMessagesInterval](#rugetmessagesinterval). В качестве параметров принимает идентификатор интервала.
+Функция [clearMessagesInterval](#rukillmessagesinterval) убивает любой из интервалов [findMessageInterval](#rufindmessageinterval) или [getMessagesInterval](#rugetmessagesinterval). В качестве параметров принимает идентификатор интервала.
 
 | параметры | значение по-умолчанию | информация |
 | ------ | ------ | ------ |
@@ -938,7 +938,7 @@ const TempMailFuck = require('temp-mail-fuck')
 
 #### <a name="enfindmessage">findMessage</a>
 
-The [findMessage](#enfindmessage) function returns the found message using the built-in callback filter of matches. In a successfully found email, there is only a preliminary message and the get Full Message function that can be used to get the full message. It takes the callback function of the filter as parameters and passes the object of the preliminary message as the first and only parameter.
+The [findMessage](#enfindmessage) function returns the found message using the built-in callback filter of matches. In a successfully found email, there is only a preliminary message and the getFullMessage function that can be used to get the full message. It takes the callback function of the filter as parameters and passes the object of the preliminary message as the first and only parameter.
 
 | parameters | default value | information|
 | ------ | ------ | ------ |
@@ -1003,7 +1003,7 @@ const TempMailFuck = require('temp-mail-fuck')
 
 #### <a name="enfindmessageinterval">findMessageInterval</a>
 
-The [findMessageInterval](#enfindmessageinterval) function returns the found message to callback2 using the built-in callback1 match filter with an interval of _N milliseconds. In a successfully found email, there is only a preliminary message and the get Full Message function that can be used to get the full message. It takes the callback function of the filter as parameters and passes the object of the preliminary message as the first and only parameter.
+The [findMessageInterval](#enfindmessageinterval) function returns the found message to callback2 using the built-in callback1 match filter with an interval of _N milliseconds. In a successfully found email, there is only a preliminary message and the getFullMessage function that can be used to get the full message. It takes the callback function of the filter as parameters and passes the object of the preliminary message as the first and only parameter.
 
 | parameters | default value | information|
 | ------ | ------ | ------ |
@@ -1076,9 +1076,9 @@ const TempMailFuck = require('temp-mail-fuck')
 })()
 ```
 
-#### <a name="enfindmessageinterval">СlearMessagesInterval</a>
+#### <a name="enfindmessageinterval">clearMessagesInterval</a>
 
-The function [ClearMessagesInterval](#enkillmessagesinterval) kills either of the intervals [find Message Interval](#enfindmessageinterval) or [getMessagesInterval](#engetmessagesinterval). Accepts the interval ID as parameters.
+The function [clearMessagesInterval](#enkillmessagesinterval) kills either of the intervals [findMessageInterval](#enfindmessageinterval) or [getMessagesInterval](#engetmessagesinterval). Accepts the interval ID as parameters.
 
 | parameters | default value | information|
 | ------ | ------ | ------ |
