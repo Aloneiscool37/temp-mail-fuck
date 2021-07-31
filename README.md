@@ -99,7 +99,7 @@ const TempMailFuck = require('temp-mail-fuck')
   console.log(mailbox)
 
   /* {
-    token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiZWU0ZWJkZGNhMDc3NDBhNGIzMjA4NzFhODIwNjgyMzciLCJtYWlsYm94IjoibWVzaXhhNTY5NkBvYnhzdG9ybS5jb20iLCJpYXQiOjE2Mjc2ODg1OTl9.QqUsiXLIYIjX1hneIkj_xEFDD_TxGMVCnF1El5xIyPU',
+    token: 'eyJhbGciOiJIUzI1NiIsInR5c ... xEFDD_TxGMVCnF1El5xIyPU',
     mailbox: 'mesixa5696@obxstorm.com',
     isOk: true,
     getMessages: [AsyncFunction (anonymous)],
@@ -139,7 +139,7 @@ const TempMailFuck = require('temp-mail-fuck')
 > getMailboxByMail - доступен только когда есть savePath.
 
 ```sh
-const TempMailFuck = require('./index.js')
+const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
   const tmf = await TempMailFuck({
@@ -178,14 +178,14 @@ const TempMailFuck = require('./index.js')
 > getMailboxByToken - доступен только когда есть savePath.
 
 ```sh
-const TempMailFuck = require('./index.js')
+const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
   const tmf = await TempMailFuck({
     savePath: __dirname + '/myMailBox.json'
   })
 
-  const mailbox = await tmf.getMailboxByToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiZWU0ZWJkZGNhMDc3NDBhNGIzMjA4NzFhODIwNjgyMzciLCJtYWlsYm94IjoibWVzaXhhNTY5NkBvYnhzdG9ybS5jb20iLCJpYXQiOjE2Mjc2ODg1OTl9.QqUsiXLIYIjX1hneIkj_xEFDD_TxGMVCnF1El5xIyPU')
+  const mailbox = await tmf.getMailboxByToken('eyJhbGciOiJIUzI1NiIsInR5c ... xEFDD_TxGMVCnF1El5xIyPU')
 
   console.log(mailbox)
 
@@ -215,12 +215,70 @@ const TempMailFuck = require('./index.js')
 Функция [kill](#kill) убивает процесс Puppeteer и заканчивает работу [TempMailFuck](#tempmailfuck).
 
 ```sh
-const TempMailFuck = require('./index.js')
+const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
   const tmf = await TempMailFuck()
 
   // ваши действия
+
+  tmf.kill()
+})()
+```
+
+#### <a name="getmessages">getMessages</a>
+
+Функция [getMessages](#getmessages) возвращает массив писем в каждом из которых есть только предварительное сообщение и функция getFullMessage которую можно использовать для получения полного сообщения, в качестве параметров ничего не принимает.
+
+```sh
+const TempMailFuck = require('temp-mail-fuck')
+
+;(async () => {
+  const tmf = await TempMailFuck({
+    savePath: __dirname + '/myMailBox.json'
+  })
+
+  //const mailbox = await tmf.createMailbox()
+  const mailbox = await tmf.getMailboxByMail('rokanod348@biohorta.com')
+  //const mailbox = await tmf.getMailboxByToken('eyJhbGciOiJIUzI1NiIsInR5c ... xEFDD_TxGMVCnF1El5xIyPU')
+
+  console.log(mailbox.mailbox) // rokanod348@biohorta.com
+
+  if (mailbox.isOk) {
+    const messages = await mailbox.getMessages()
+
+    console.log(messages)
+
+  /* [
+      {
+        _id: '6104961ed1a97500a1c32d52',
+        receivedAt: 1627690527,
+        from: 'Stas Prohetamine <prohetamine@gmail.com>',
+        subject: null,
+        bodyPreview: ' Привет бедный человек ',
+        attachmentsCount: 0,
+        getFullMessage: [AsyncFunction (anonymous)]
+      }
+    ] */
+
+    if (messages.length > 0) {
+      console.log(await messages[0].getFullMessage())
+
+    /* {
+        _id: '6104961ed1a97500a1c32d52',
+        receivedAt: 1627690527,
+        user: '46df74731e18464c89d55b2972669556',
+        mailbox: 'rokanod348@biohorta.com',
+        from: 'Stas Prohetamine <prohetamine@gmail.com>',
+        subject: null,
+        bodyPreview: ' Привет бедный человек ',
+        bodyHtml: '<div dir="ltr">Привет бедный человек</div>\n',
+        attachmentsCount: 0,
+        attachments: [],
+        createdAt: '2021-07-31T00:15:26.712Z'
+      } */
+    }
+  }
 
   tmf.kill()
 })()
