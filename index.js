@@ -1,6 +1,16 @@
 const puppeteer = require('puppeteer')
     , fs = require('fs')
 
+global.TMFFCB = () => {}
+
+global.PDCTMF = ({
+  args: ['--no-sandbox', '--disable-web-security'],
+  headless: true,
+  ignoreHTTPSErrors: true
+})
+
+global.SPDCTMF = ({ savePath: false })
+
 const getFullMessage = (page, token, id) => async () => {
   const message = await page.evaluate(
     (token, id) => fetch(`https://web2.temp-mail.org/messages/${id}`, {
@@ -48,9 +58,8 @@ const getMessages = (page, token) => async () => {
   }))
 }
 
-
 const messageController = (page, mailbox) => {
-  const findMessage = async callback => {
+  const findMessage = async (callback = global.TMFFCB) => {
     const messages = await getMessages(page, mailbox.token)()
 
     const message = messages.find(message => callback(message))
@@ -65,26 +74,18 @@ const messageController = (page, mailbox) => {
     ...mailbox,
     isOk: !!(() => mailbox.token && mailbox.mailbox)(),
     getMessages: getMessages(page, mailbox.token),
-    getMessagesInterval: async (callback, ms = 5000) => {
+    getMessagesInterval: async (callback = global.TMFFCB, ms = 30000) => {
       callback(await (getMessages(page, mailbox.token)()))
       return setInterval(async () => callback(await (getMessages(page, mailbox.token)())), ms)
     },
-    clearMessagesInterval: id => clearInterval(id),
+    killMessagesInterval: id => clearInterval(id),
     findMessage,
-    findMessageInterval: async (callback1, callback2, ms = 5000) => {
+    findMessageInterval: async (callback1 = global.TMFFCB, callback2 = global.TMFFCB, ms = 30000) => {
       callback2(await findMessage(callback1))
       return setInterval(async () => callback2(await findMessage(callback1)), ms)
     },
   })
 }
-
-global.PDCTMF = ({
-  args: ['--no-sandbox', '--disable-web-security'],
-  headless: true,
-  ignoreHTTPSErrors: true
-})
-
-global.SPDCTMF = ({ savePath: false })
 
 const TempMailFuck = async (saveConfig, puppeteerConfig) => {
   let _puppeteerConfig = puppeteerConfig
@@ -130,7 +131,7 @@ const TempMailFuck = async (saveConfig, puppeteerConfig) => {
 
       return messageController(page, mailbox)
     },
-    getMailboxByMail: mail => {
+    getMailboxByMail: (mail = null) => {
       if (_saveConfig.savePath) {
         let mailboxs = []
         try {
@@ -144,7 +145,7 @@ const TempMailFuck = async (saveConfig, puppeteerConfig) => {
 
       return '/* not save path, read doc. */'
     },
-    getMailboxByToken: _token => {
+    getMailboxByToken: (_token = null) => {
       if (_saveConfig.savePath) {
         let mailboxs = []
         try {

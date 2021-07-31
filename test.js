@@ -16,38 +16,38 @@ const TempMailFuck = require('./index.js')
   //console.log(mailbox.isOk)
 
   if (mailbox.isOk) {
-    const messages = await mailbox.getMessages()
+    //console.log(await messages[0].getFullMessage())
 
-    console.log(messages)
-
-    console.log(await messages[0].getFullMessage())
-
-    /*const id = await mailbox.getMessagesInterval(messages => {
+    /*const id = await mailbox.getMessagesInterval(async messages => {
       console.log(await messages[0].getFullMessage())
-    }, 5000)
+    }, 5000)*/
 
-    mailbox.clearMessagesInterval(id)*/
+    //mailbox.killMessagesInterval(id)
 
-    /*const autodesk = await mailbox.findMessage(({ from, subject, bodyPreview }) => from.match(/Autodesk/gi))
+    /*const prohetamine = await mailbox.findMessage(({ from, subject, bodyPreview }) => from.match(/prohetamine/gi))
 
-    if (autodesk.isFind) {
-      console.log(await autodesk.message.getFullMessage())
+    console.log(prohetamine)
+
+    if (prohetamine.isFind) {
+      console.log(await prohetamine.message.getFullMessage())
     }*/
 
-    /*const id = await mailbox.findMessageInterval(
+    const id = await mailbox.findMessageInterval(
       ({ from, subject, bodyPreview }) => from.match(/prohetamine/gi),
-      message => {
-        if (message.isFind) {
-          console.log(message)
+      async _message => {
+        console.log(_message)
+
+        const { message, isFind } = _message
+
+        if (isFind) {
+          console.log(await message.getFullMessage())
         }
       },
       5000
     )
 
-    mailbox.clearMessagesInterval(id)
-*/
-
+    //mailbox.killMessagesInterval(id)
   }
 
-  tmf.kill()
+  //tmf.kill()
 })()

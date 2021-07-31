@@ -1,6 +1,6 @@
 ![enter image description here](/media/logo.png)
 
-##### lang: [ru](#rulang) [en](#enlang)
+##### lang: [ru](#rurulang) [en](#ruenlang)
 
 
 # <a name="rulang">temp-mail-fuck</a>
@@ -38,9 +38,9 @@ $ yarn add https://github.com/prohetamine/temp-mail-fuck
 const TempMailFuck = require('temp-mail-fuck')
 ```
 
-#### <a name="tempmailfuck">TempMailFuck</a>
+#### <a name="rutempmailfuck">TempMailFuck</a>
 
-Функция [TempMailFuck](#tempmailfuck) инициализирует подключение к Puppeteer принимает два необязательных параметра, два объекта и возвращает объект с функциями: [kill](#kill), [createMailbox](#createmailbox), [getMailboxByMail](#getmailboxbymail), [getMailboxByToken](#getmailboxbytoken). Не забывайте убивать процесс Puppeteer если не используете модуль с помощью [kill](#kill).
+Функция [TempMailFuck](#rutempmailfuck) инициализирует подключение к Puppeteer принимает два необязательных параметра, два объекта и возвращает объект с функциями: [kill](#rukill), [createMailbox](#rucreatemailbox), [getMailboxByMail](#rugetmailboxbymail), [getMailboxByToken](#rugetmailboxbytoken). Не забывайте убивать процесс Puppeteer если не используете модуль с помощью [kill](#rukill).
 
 ##### object
 
@@ -78,13 +78,15 @@ const TempMailFuck = require('temp-mail-fuck')
     getMailboxByToken: [Function: getMailboxByToken]
   } */
 
-  tmf.kill() // Убивает процесс puppeteer
+  setTimeout(() => {
+    tmf.kill() // Убивает процесс puppeteer
+  }, 60000 * 10)
 })()
 ```
 
-#### <a name="createmailbox">createMailbox</a>
+#### <a name="rucreatemailbox">createMailbox</a>
 
-Функция [createMailbox](#createmailbox) создает новый почтовый ящик, взаимодействовать с ним можно через функции [getMessages](#getmessages), [getMessagesInterval](#getmessagesinterval), [clearMessagesInterval](#clearmessagestnterval), [findMessage](#findmessage), [findMessageInterval](#findmessageinterval).
+Функция [createMailbox](#rucreatemailbox) создает новый почтовый ящик, взаимодействовать с ним можно через функции [getMessages](#rugetmessages), [getMessagesInterval](#rugetmessagesinterval), [findMessage](#rufindmessage), [findMessageInterval](#rufindmessageinterval), [killMessagesInterval](#rukillmessagesinterval).
 
 ```sh
 const TempMailFuck = require('temp-mail-fuck')
@@ -104,7 +106,7 @@ const TempMailFuck = require('temp-mail-fuck')
     isOk: true,
     getMessages: [AsyncFunction (anonymous)],
     getMessagesInterval: [AsyncFunction: getMessagesInterval],
-    clearMessagesInterval: [Function: clearMessagesInterval],
+    killMessagesInterval: [Function: killMessagesInterval],
     findMessage: [AsyncFunction: findMessage],
     findMessageInterval: [AsyncFunction: findMessageInterval]
   } */
@@ -122,21 +124,29 @@ const TempMailFuck = require('temp-mail-fuck')
       5000
     )
 
-    setTimeout(() => {
-      mailbox.clearMessagesInterval(id)
+    return setTimeout(() => {
+      mailbox.killMessagesInterval(id)
       tmf.kill()
     }, 60000)
   } else {
     // что-то пошло не так...
   }
+
+  setTimeout(() => {
+    tmf.kill()
+  }, 60000 * 10)
 })()
 ```
 
-#### <a name="getmailboxbymail">getMailboxByMail</a>
+#### <a name="rugetmailboxbymail">getMailboxByMail</a>
 
-Функция [getMailboxByMail](#getmailboxbymail) ищет почтовый ящик по mail переданному первым параметром, взаимодействовать с ним можно через функции [getMessages](#getmessages), [getMessagesInterval](#getmessagesinterval), [clearMessagesInterval](#clearmessagestnterval), [findMessage](#findmessage), [findMessageInterval](#findmessageinterval).
+Функция [getMailboxByMail](#rugetmailboxbymail) ищет почтовый ящик по mail переданному первым параметром, взаимодействовать с ним можно через функции [getMessages](#rugetmessages), [getMessagesInterval](#rugetmessagesinterval), [findMessage](#rufindmessage), [findMessageInterval](#rufindmessageinterval), [killMessagesInterval](#rukillmessagesinterval).
 
 > getMailboxByMail - доступен только когда есть savePath.
+
+| параметры | значение по-умолчанию | информация |
+| ------ | ------ | ------ |
+| string | null | ключ поиска писем |
 
 ```sh
 const TempMailFuck = require('temp-mail-fuck')
@@ -156,7 +166,7 @@ const TempMailFuck = require('temp-mail-fuck')
     isOk: false,
     getMessages: [AsyncFunction (anonymous)],
     getMessagesInterval: [AsyncFunction: getMessagesInterval],
-    clearMessagesInterval: [Function: clearMessagesInterval],
+    killMessagesInterval: [Function: killMessagesInterval],
     findMessage: [AsyncFunction: findMessage],
     findMessageInterval: [AsyncFunction: findMessageInterval]
   } */
@@ -168,14 +178,22 @@ const TempMailFuck = require('temp-mail-fuck')
   } else {
     // что-то пошло не так...
   }
+
+  setTimeout(() => {
+    tmf.kill()
+  }, 60000 * 10)
 })()
 ```
 
-#### <a name="getmailboxbytoken">getMailboxByToken</a>
+#### <a name="rugetmailboxbytoken">getMailboxByToken</a>
 
-Функция [getMailboxByToken](#getmailboxbytoken) ищет почтовый ящик по token переданному первым параметром, взаимодействовать с ним можно через функции [getMessages](#getmessages), [getMessagesInterval](#getmessagesinterval), [clearMessagesInterval](#clearmessagestnterval), [findMessage](#findmessage), [findMessageInterval](#findmessageinterval).
+Функция [getMailboxByToken](#rugetmailboxbytoken) ищет почтовый ящик по token переданному первым параметром, взаимодействовать с ним можно через функции [getMessages](#rugetmessages), [getMessagesInterval](#rugetmessagesinterval), [findMessage](#rufindmessage), [findMessageInterval](#rufindmessageinterval), [killMessagesInterval](#rukillmessagesinterval).
 
 > getMailboxByToken - доступен только когда есть savePath.
+
+| параметры | значение по-умолчанию | информация |
+| ------ | ------ | ------ |
+| string | null | ключ поиска писем |
 
 ```sh
 const TempMailFuck = require('temp-mail-fuck')
@@ -195,7 +213,7 @@ const TempMailFuck = require('temp-mail-fuck')
     isOk: false,
     getMessages: [AsyncFunction (anonymous)],
     getMessagesInterval: [AsyncFunction: getMessagesInterval],
-    clearMessagesInterval: [Function: clearMessagesInterval],
+    killMessagesInterval: [Function: killMessagesInterval],
     findMessage: [AsyncFunction: findMessage],
     findMessageInterval: [AsyncFunction: findMessageInterval]
   } */
@@ -207,12 +225,16 @@ const TempMailFuck = require('temp-mail-fuck')
   } else {
     // что-то пошло не так...
   }
+
+  setTimeout(() => {
+    tmf.kill()
+  }, 60000 * 10)
 })()
 ```
 
-#### <a name="kill">kill</a>
+#### <a name="rukill">kill</a>
 
-Функция [kill](#kill) убивает процесс Puppeteer и заканчивает работу [TempMailFuck](#tempmailfuck).
+Функция [kill](#rukill) убивает процесс Puppeteer и заканчивает работу [TempMailFuck](#rutempmailfuck).
 
 ```sh
 const TempMailFuck = require('temp-mail-fuck')
@@ -222,13 +244,15 @@ const TempMailFuck = require('temp-mail-fuck')
 
   // ваши действия
 
-  tmf.kill()
+  setTimeout(() => {
+    tmf.kill()
+  }, 60000 * 10)
 })()
 ```
 
-#### <a name="getmessages">getMessages</a>
+#### <a name="rugetmessages">getMessages</a>
 
-Функция [getMessages](#getmessages) возвращает массив писем в каждом из которых есть только предварительное сообщение и функция getFullMessage которую можно использовать для получения полного сообщения, в качестве параметров ничего не принимает.
+Функция [getMessages](#rugetmessages) возвращает массив писем в каждом из которых есть только предварительное сообщение и функция getFullMessage которую можно использовать для получения полного сообщения. В качестве параметров ничего не принимает.
 
 ```sh
 const TempMailFuck = require('temp-mail-fuck')
@@ -280,6 +304,257 @@ const TempMailFuck = require('temp-mail-fuck')
     }
   }
 
-  tmf.kill()
+  setTimeout(() => {
+    tmf.kill()
+  }, 60000 * 10)
 })()
 ```
+
+#### <a name="rugetmessagesinterval">getMessagesInterval</a>
+
+Функция [getMessagesInterval](#rugetmessagesinterval) возвращает массив писем через callback c интервалом в _N миллисекунд_ в каждом из которых есть только предварительное сообщение и функция getFullMessage которую можно использовать для получения полного сообщения. В качестве параметров принимает callback первым и единственным параметром в который передает письма, а вторым параметром принимает время интервала в миллисекундах.
+
+| параметры | значение по-умолчанию | информация |
+| ------ | ------ | ------ |
+| funtcion | global.TMFFCB | функция обратного вызова с аргументом в виде массива писем |
+| number | 30000 | время интервала в миллисекундах |
+
+```sh
+const TempMailFuck = require('temp-mail-fuck')
+
+;(async () => {
+  const tmf = await TempMailFuck({
+    savePath: __dirname + '/myMailBox.json'
+  })
+
+  //const mailbox = await tmf.createMailbox()
+  const mailbox = await tmf.getMailboxByMail('rokanod348@biohorta.com')
+  //const mailbox = await tmf.getMailboxByToken('eyJhbGciOiJIUzI1NiIsInR5c ... xEFDD_TxGMVCnF1El5xIyPU')
+
+  console.log(mailbox.mailbox) // rokanod348@biohorta.com
+
+  if (mailbox.isOk) {
+    const id = await mailbox.getMessagesInterval(async messages => {
+      console.log(messages)
+
+      /* [
+        {
+          _id: '6104961ed1a97500a1c32d52',
+          receivedAt: 1627690527,
+          from: 'Stas Prohetamine <prohetamine@gmail.com>',
+          subject: null,
+          bodyPreview: ' Привет бедный человек ',
+          attachmentsCount: 0,
+          getFullMessage: [AsyncFunction (anonymous)]
+        }
+      ] */
+
+      if (messages.length > 0) {
+        console.log(await messages[0].getFullMessage())
+
+      /* {
+          _id: '6104961ed1a97500a1c32d52',
+          receivedAt: 1627690527,
+          user: '46df74731e18464c89d55b2972669556',
+          mailbox: 'rokanod348@biohorta.com',
+          from: 'Stas Prohetamine <prohetamine@gmail.com>',
+          subject: null,
+          bodyPreview: ' Привет бедный человек ',
+          bodyHtml: '<div dir="ltr">Привет бедный человек</div>\n',
+          attachmentsCount: 0,
+          attachments: [],
+          createdAt: '2021-07-31T00:15:26.712Z'
+        } */
+      }
+    }, 5000)
+  }
+
+  setTimeout(() => {
+    tmf.kill()
+  }, 60000 * 10)
+})()
+```
+
+#### <a name="rufindmessage">findMessage</a>
+
+Функция [findMessage](#rufindmessage) возвращает найденное письмо с помощью встроенного callback фильтра совпадений. В успешно найденном письме есть только предварительное сообщение и функция getFullMessage которую можно использовать для получения полного сообщения. В качестве параметров принимает callback функцию фильтра и первым единственным параметром в который передает объект предварительного письма.
+
+| параметры | значение по-умолчанию | информация |
+| ------ | ------ | ------ |
+| funtcion | global.TMFFCB | функция обратного вызова с аргументами в виде ключей объекта предварительного письма |
+
+```sh
+const TempMailFuck = require('temp-mail-fuck')
+
+;(async () => {
+  const tmf = await TempMailFuck({
+    savePath: __dirname + '/myMailBox.json'
+  })
+
+  //const mailbox = await tmf.createMailbox()
+  const mailbox = await tmf.getMailboxByMail('rokanod348@biohorta.com')
+  //const mailbox = await tmf.getMailboxByToken('eyJhbGciOiJIUzI1NiIsInR5c ... xEFDD_TxGMVCnF1El5xIyPU')
+
+  console.log(mailbox.mailbox) // rokanod348@biohorta.com
+
+  if (mailbox.isOk) {
+    const prohetamine = await mailbox.findMessage(({ from, subject, bodyPreview }) => from.match(/prohetamine/gi))
+
+    console.log(prohetamine)
+
+    /* {
+      isFind: true,
+      message: {
+        _id: '6104961ed1a97500a1c32d52',
+        receivedAt: 1627690527,
+        from: 'Stas Prohetamine <prohetamine@gmail.com>',
+        subject: null,
+        bodyPreview: ' Привет бедный человек ',
+        attachmentsCount: 0,
+        getFullMessage: [AsyncFunction (anonymous)]
+      }
+    } */
+
+    if (prohetamine.isFind) {
+      console.log(await prohetamine.message.getFullMessage())
+
+      /* {
+        _id: '6104961ed1a97500a1c32d52',
+        receivedAt: 1627690527,
+        user: '46df74731e18464c89d55b2972669556',
+        mailbox: 'rokanod348@biohorta.com',
+        from: 'Stas Prohetamine <prohetamine@gmail.com>',
+        subject: null,
+        bodyPreview: ' Привет бедный человек ',
+        bodyHtml: '<div dir="ltr">Привет бедный человек</div>\n',
+        attachmentsCount: 0,
+        attachments: [],
+        createdAt: '2021-07-31T00:15:26.712Z'
+      } */
+    }
+  }
+
+  setTimeout(() => {
+    tmf.kill()
+  }, 60000 * 10)
+})()
+```
+
+#### <a name="rufindmessageinterval">findMessageInterval</a>
+
+Функция [findMessageInterval](#rufindmessageinterval) возвращает найденное письмо в callback2 с помощью встроенного callback1 фильтра совпадений с интервалом в _N миллисекунд_. В успешно найденном письме есть только предварительное сообщение и функция getFullMessage которую можно использовать для получения полного сообщения. В качестве параметров принимает callback функцию фильтра и первым единственным параметром в который передает объект предварительного письма.
+
+| параметры | значение по-умолчанию | информация |
+| ------ | ------ | ------ |
+| funtcion | global.TMFFCB | функция обратного вызова с аргументами в виде ключей объекта предварительного письма |
+| funtcion | global.TMFFCB | функция обратного вызова с аргументом в виде массива писем |
+| number | 30000 | время интервала в миллисекундах |
+
+```sh
+const TempMailFuck = require('temp-mail-fuck')
+
+;(async () => {
+  const tmf = await TempMailFuck({
+    savePath: __dirname + '/myMailBox.json'
+  })
+
+  //const mailbox = await tmf.createMailbox()
+  const mailbox = await tmf.getMailboxByMail('rokanod348@biohorta.com')
+  //const mailbox = await tmf.getMailboxByToken('eyJhbGciOiJIUzI1NiIsInR5c ... xEFDD_TxGMVCnF1El5xIyPU')
+
+  console.log(mailbox.mailbox) // rokanod348@biohorta.com
+
+  if (mailbox.isOk) {
+    const id = await mailbox.findMessageInterval(
+      ({ from, subject, bodyPreview }) => from.match(/prohetamine/gi),
+      async _message => {
+        console.log(_message)
+
+        /* {
+          isFind: true,
+          message: {
+            _id: '6104961ed1a97500a1c32d52',
+            receivedAt: 1627690527,
+            from: 'Stas Prohetamine <prohetamine@gmail.com>',
+            subject: null,
+            bodyPreview: ' Привет бедный человек ',
+            attachmentsCount: 0,
+            getFullMessage: [AsyncFunction (anonymous)]
+          }
+        } */
+
+        const { message, isFind } = _message
+
+        if (isFind) {
+          console.log(await message.getFullMessage())
+
+          /* {
+            _id: '6104961ed1a97500a1c32d52',
+            receivedAt: 1627690527,
+            user: '46df74731e18464c89d55b2972669556',
+            mailbox: 'rokanod348@biohorta.com',
+            from: 'Stas Prohetamine <prohetamine@gmail.com>',
+            subject: null,
+            bodyPreview: ' Привет бедный человек ',
+            bodyHtml: '<div dir="ltr">Привет бедный человек</div>\n',
+            attachmentsCount: 0,
+            attachments: [],
+            createdAt: '2021-07-31T00:15:26.712Z'
+          } */
+        }
+      },
+      5000
+    )
+
+    // mailbox.killMessagesInterval(id) // выключает таймер
+  }
+
+  setTimeout(() => {
+    tmf.kill()
+  }, 60000 * 10)
+})()
+```
+
+#### <a name="rufindmessageinterval">СlearMessagesInterval</a>
+
+Функция [СlearMessagesInterval](#rukillmessagesinterval) убивает любой из интервалов [findMessageInterval](#rufindmessageinterval) или [getMessagesInterval](#rugetmessagesinterval). В качестве параметров принимает идентификатор интервала.
+
+| параметры | значение по-умолчанию | информация |
+| ------ | ------ | ------ |
+| id | null | идентификатор интервала |
+
+```sh
+const TempMailFuck = require('temp-mail-fuck')
+
+;(async () => {
+  const tmf = await TempMailFuck({
+    savePath: __dirname + '/myMailBox.json'
+  })
+
+  const mailbox = await tmf.createMailbox()
+
+  if (mailbox.isOk) {
+    const id = await mailbox.getMessagesInterval(async messages => {
+      console.log(messages)
+    }, 5000)
+
+    setTimeout(() => {
+      mailbox.killMessagesInterval(id) // убивает интервал
+    }, 30000)
+  }
+
+  setTimeout(() => {
+    tmf.kill()
+  }, 60000 * 10)
+})()
+```
+
+### Контакты
+
+Мой Телеграм: [@prohetamine](https://t.me/prohetamine), [канал](https://t.me/prohetamine)
+
+Почта: prohetamine@gmail.com
+
+Донат денег: [patreon](https://www.patreon.com/prohetamine)
+
+Если у вас есть какие-либо вопросы и/или предложения, пожалуйста, напишите мне в телеграмме, если вы найдете ошибки также дайте мне знать, я буду очень благодарен.
