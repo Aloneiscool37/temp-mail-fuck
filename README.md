@@ -214,8 +214,6 @@ const TempMailFuck = require('./index.js')
 
 Функция [kill](#kill) убивает процесс Puppeteer и заканчивает работу [TempMailFuck](#tempmailfuck).
 
-> getMailboxByToken - доступен только когда есть savePath.
-
 ```sh
 const TempMailFuck = require('./index.js')
 
