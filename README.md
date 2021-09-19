@@ -3,7 +3,7 @@
 ##### README is available in the following languages: [Russian](https://github.com/prohetamine/temp-mail-fuck/blob/main/README/russian.md) | [English](https://github.com/prohetamine/temp-mail-fuck/blob/main/README.md)
 
 
-# temp-mail-fuck
+# Temp Mail Fuck
 
 > temp-mail-fuck - Your best friend in the world of email.
 
