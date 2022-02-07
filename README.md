@@ -27,7 +27,7 @@ $ yarn add temp-mail-fuck
 or
 
 ```sh
-$ yarn add https://github.com/prohetamine/temp-mail-fuck
+$ npm install https://github.com/prohetamine/temp-mail-fuck
 ```
 
 ### Examples and description
