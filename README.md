@@ -34,7 +34,7 @@ $ npm install https://github.com/prohetamine/temp-mail-fuck
 
 Connecting the module
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 ```
 
@@ -54,7 +54,7 @@ The function [TempMailFuck](#entempmailfuck) initializes the connection to Puppe
 | ------ | ------ | ------ | ------ | ------ |
 | any available Puppeteer | none-type | global.PDCTMF | none | is used to configure the Puppeteer launcher |
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -88,7 +88,7 @@ const TempMailFuck = require('temp-mail-fuck')
 
 The [createMailbox](#encreatemailbox) function creates a new mailbox, you can interact with it through the functions [getMessages](#engetmessages), [getMessagesInterval](#engetmessagesinterval), [findMessage](#enfindmessage), [findMessageInterval](#enfindmessageinterval), [killMessagesInterval](#enkillmessagesinterval).
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -148,7 +148,7 @@ The function [getMailboxByMail](#engetmailboxbymail) searches for a mailbox by m
 | ------ | ------ | ------ |
 | string | null | message search key |
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -195,7 +195,7 @@ The function [getMailboxByToken](#engetmailboxbytoken) searches for a mailbox by
 | ------ | ------ | ------ |
 | string | null | message search key |
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -236,7 +236,7 @@ const TempMailFuck = require('temp-mail-fuck')
 
 The [kill](#kill) function kills the Puppeteer process and finishes [TempMailFuck](#entempmailfuck).
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -254,7 +254,7 @@ const TempMailFuck = require('temp-mail-fuck')
 
 The [getMessage](#engetmessages) function returns an array of emails, each of which contains only a preliminary message and the getFullMessage function that can be used to get the full message. It does not accept anything as parameters.
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -319,7 +319,7 @@ The [getMessagesInterval](#engetmessagesinterval) function returns an array of m
 | function | global.TMFFCB | callback function with an argument in the form of an array of letters |
 | number | 30000 | interval time in milliseconds |
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -383,7 +383,7 @@ The [findMessage](#enfindmessage) function returns the found message using the b
 | ------ | ------ | ------ |
 | function | global.TMFFCB | callback function with arguments in the form of keys of the preliminary letter object |
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -450,7 +450,7 @@ The [findMessageInterval](#enfindmessageinterval) function returns the found mes
 | function | global.TMFFCB | callback function with an argument in the form of an array of letters |
 | number | 30000 | interval time in milliseconds |
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -523,7 +523,7 @@ The function [clearMessagesInterval](#enkillmessagesinterval) kills either of th
 | ------ | ------ | ------ |
 | id | null | interval id |
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {

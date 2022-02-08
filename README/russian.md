@@ -34,7 +34,7 @@ $ npm install https://github.com/prohetamine/temp-mail-fuck
 
 Подключение модуля
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 ```
 
@@ -54,7 +54,7 @@ const TempMailFuck = require('temp-mail-fuck')
 | ------ | ------ | ------ | ------ | ------ |
 | любой доступный Puppeteer | none-type | global.PDCTMF | нет | используется для настройки лаунчера Puppeteer |
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -88,7 +88,7 @@ const TempMailFuck = require('temp-mail-fuck')
 
 Функция [createMailbox](#rucreatemailbox) создает новый почтовый ящик, взаимодействовать с ним можно через функции [getMessages](#rugetmessages), [getMessagesInterval](#rugetmessagesinterval), [findMessage](#rufindmessage), [findMessageInterval](#rufindmessageinterval), [killMessagesInterval](#rukillmessagesinterval).
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -148,7 +148,7 @@ const TempMailFuck = require('temp-mail-fuck')
 | ------ | ------ | ------ |
 | string | null | ключ поиска писем |
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -195,7 +195,7 @@ const TempMailFuck = require('temp-mail-fuck')
 | ------ | ------ | ------ |
 | string | null | ключ поиска писем |
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -236,7 +236,7 @@ const TempMailFuck = require('temp-mail-fuck')
 
 Функция [kill](#rukill) убивает процесс Puppeteer и заканчивает работу [TempMailFuck](#rutempmailfuck).
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -254,7 +254,7 @@ const TempMailFuck = require('temp-mail-fuck')
 
 Функция [getMessages](#rugetmessages) возвращает массив писем в каждом из которых есть только предварительное сообщение и функция getFullMessage которую можно использовать для получения полного сообщения. В качестве параметров ничего не принимает.
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -319,7 +319,7 @@ const TempMailFuck = require('temp-mail-fuck')
 | funtcion | global.TMFFCB | функция обратного вызова с аргументом в виде массива писем |
 | number | 30000 | время интервала в миллисекундах |
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -383,7 +383,7 @@ const TempMailFuck = require('temp-mail-fuck')
 | ------ | ------ | ------ |
 | funtcion | global.TMFFCB | функция обратного вызова с аргументами в виде ключей объекта предварительного письма |
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -450,7 +450,7 @@ const TempMailFuck = require('temp-mail-fuck')
 | funtcion | global.TMFFCB | функция обратного вызова с аргументом в виде массива писем |
 | number | 30000 | время интервала в миллисекундах |
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
@@ -523,7 +523,7 @@ const TempMailFuck = require('temp-mail-fuck')
 | ------ | ------ | ------ |
 | id | null | идентификатор интервала |
 
-```sh
+```javascript
 const TempMailFuck = require('temp-mail-fuck')
 
 ;(async () => {
