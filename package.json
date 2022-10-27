@@ -44,7 +44,7 @@
     "progress": "^2.0.1",
     "proxy-from-env": "^1.1.0",
     "pump": "^3.0.0",
-    "puppeteer": "^10.1.0",
+    "puppeteer": "^19.2.0",
     "readable-stream": "^3.6.0",
     "rimraf": "^3.0.2",
     "safe-buffer": "^5.2.1",
