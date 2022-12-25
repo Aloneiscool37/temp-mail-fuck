@@ -7,9 +7,8 @@
 
 > temp-mail-fuck - Your best friend in the world of email.
 
-### Why ?
-I am a very poor person, there are 14 people in my family and they are also poor can you imagine ? And my grandmother is generally 88 years old. We just can't afford to pay$ 19 for a fucking 1000 requests per month for some one-time mail. And what if really want to ? we accidentally noticed that, the most fashionable [Cloudflare](/media/Cloudflare.jpg) skips all the main api requests and decided to [use it](https://github.com/prohetamine/temp-mail-fuck#readme), [thank you](https://temp-mail.org/) for this opportunity, now my [family](https://www.npmjs.com/package/temp-mail-fuck) eats mailboxes! I hope my contribution will make it easier for someone [life](https://www.patreon.com/prohetamine).
-
+### Why donate to this nigga that made a broken api?
+Well don't I fixed this shitty ass nigga's broken api and he don't need pitty from others now so be cool and don't donate to that nigga but do give him credit for the source 😉
 ### Get started
 
 Install the npm module ```temp-mail-fuck```
